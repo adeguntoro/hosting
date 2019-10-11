@@ -18,3 +18,12 @@ Route::get('/', function () {
 Route::get('foo', function () {
     return 'Hello World';
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('artikel', 'ArtikelController');
+
+Route::get('/react', function () {
+    return view('blog.index');
+});

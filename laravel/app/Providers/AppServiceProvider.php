@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,11 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        //
+    {   
+        Carbon::setLocale('id');
+        Carbon::serializeUsing(function ($carbon) {
+            return $carbon->diffForHumans();
+        });
+
     }
 }
